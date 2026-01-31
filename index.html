@@ -1,62 +1,178 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <title>Black Force 007 – Club Dashboard Demo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Force 007 | Club Management Demo</title>
   <style>
-    body {margin:0;font-family:Arial,Helvetica,sans-serif;background:#111;color:#eee}
-    header {background:#000;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
-    header h1 {font-size:18px;color:#0f0;margin:0}
-    .menu {font-size:22px;cursor:pointer}
-    .container {display:flex;min-height:100vh}
-    .sidebar {width:240px;background:#1a1a1a;padding:15px}
-    .sidebar a {display:block;color:#ccc;text-decoration:none;padding:10px;border-radius:6px;margin-bottom:6px}
-    .sidebar a:hover {background:#0f0;color:#000}
-    .main {flex:1;padding:20px}
-    .card {background:#1f1f1f;border-radius:10px;padding:15px;margin-bottom:15px}
-    .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-    .btn {background:#0f0;color:#000;padding:10px;border:none;border-radius:6px;cursor:pointer;font-weight:bold}
-    .badge {background:#f00;color:#fff;font-size:12px;padding:2px 6px;border-radius:4px}
-    footer {background:#000;padding:15px;text-align:center;color:#888}
+    :root{
+      --black:#0b0b0b;--red:#e10600;--green:#1abc9c;--gray:#f4f6f8;--white:#ffffff;
+    }
+    *{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto}
+    body{margin:0;background:var(--gray);color:#222}
+    a{text-decoration:none;color:inherit}
+    .btn{display:inline-block;padding:10px 16px;border-radius:8px;background:var(--red);color:#fff;font-size:14px}
+    .btn.outline{background:#fff;color:#111;border:1px solid #ddd}
+    header{position:sticky;top:0;z-index:99;background:var(--black);color:#fff}
+    .nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+    .logo{font-weight:800;letter-spacing:.5px}
+    .menu a{margin:0 8px;font-size:14px;opacity:.9}
+    .hero{background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('https://picsum.photos/1400/600');background-size:cover;color:#fff}
+    .hero .wrap{max-width:1200px;margin:auto;padding:70px 16px;text-align:center}
+    .hero h1{font-size:36px;margin:0 0 8px}
+    .hero p{max-width:700px;margin:0 auto 18px;opacity:.95}
+    .container{max-width:1200px;margin:auto;padding:22px 16px}
+    .section{margin-top:28px}
+    .title{font-size:22px;margin:0 0 14px;border-left:5px solid var(--black);padding-left:10px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+    .card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    .card h3{margin:0 0 6px;font-size:16px}
+    .muted{color:#666;font-size:13px}
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}
+    th,td{padding:10px;border-bottom:1px solid #eee;font-size:13px;text-align:left}
+    th{background:#111;color:#fff}
+    .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;background:#eef}
+    .layout{display:grid;grid-template-columns:260px 1fr;gap:16px}
+    .sidebar{background:#fff;border-radius:14px;padding:14px}
+    .sidebar a{display:block;padding:10px;border-radius:8px;margin-bottom:6px}
+    .sidebar a.active,.sidebar a:hover{background:#f1f3f5}
+    footer{background:#111;color:#ccc;margin-top:40px}
+    footer .wrap{max-width:1200px;margin:auto;padding:22px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    @media(max-width:800px){.menu{display:none}.layout{grid-template-columns:1fr}}
   </style>
 </head>
-<body>
-<header>
-  <h1>BLACK FORCE 007</h1>
-  <div class="menu">☰</div>
-</header><div class="container">
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <a href="#">👤 My Profile</a>
-    <a href="#">🔴 All Committee Updates</a>
-    <a href="#">🟡 Bichar Committee</a>
-    <a href="#">🔵 Jalsa Committee</a>
-    <a href="#">➕ Add / Approve Member</a>
-    <a href="#">📄 Notice / Announcement</a>
-    <a href="#">🔍 Activity History</a>
-    <a href="#">🚪 Logout</a>
-  </div>  <!-- MAIN -->  <div class="main">
-    <div class="card">
-      <h2>Welcome, Core Committee Member</h2>
-      <p>Role-based dashboard demo. What you see depends on your permission.</p>
-    </div><div class="grid">
-  <div class="card">🎮 Tournament<br><span class="badge">Live</span></div>
-  <div class="card">🏆 Membership</div>
-  <div class="card">🛒 Shop</div>
-  <div class="card">📰 Blog / News</div>
-  <div class="card">💬 Live Chat</div>
-  <div class="card">📢 Club Updates</div>
-</div>
-
-<div class="card">
-  <h3>Upcoming Event</h3>
-  <p>Annual Jalsa – Registration Open</p>
-  <button class="btn">Register Now</button>
-</div>
-
+<body><header>
+  <div class="nav">
+    <div class="logo">BLACK FORCE 007</div>
+    <div class="menu">
+      <a href="#home">home</a>
+      <a href="#about">about</a>
+      <a href="#events">events</a>
+      <a href="#services">services</a>
+      <a href="#shop">shop</a>
+      <a href="#dashboard">dashboard</a>
+      <a href="#">login</a>
+    </div>
   </div>
-</div><footer>
-  © 2026 Black Force 007 | Club Management System Demo
-</footer>
-</body>
+</header><section id="home" class="hero">
+  <div class="wrap">
+    <h1>Black Force 007</h1>
+    <p>একটি সম্পূর্ণ Role‑Based Club Management Platform — Online + Offline একসাথে</p>
+    <a class="btn" href="#">join now</a>
+    <a class="btn outline" href="#dashboard">member dashboard</a>
+  </div>
+</section><div class="container">  <section class="section">
+    <h2 class="title">Quick Access</h2>
+    <div class="grid">
+      <div class="card">🎮 tournament</div>
+      <div class="card">🏆 membership</div>
+      <div class="card">📰 club news</div>
+      <div class="card">📢 notice board</div>
+      <div class="card">🛒 club shop</div>
+      <div class="card">💬 live chat</div>
+    </div>
+  </section>  <section id="about" class="section">
+    <h2 class="title">About Club</h2>
+    <div class="card">
+      <p class="muted">Black Force 007 একটি সামাজিক‑সাংস্কৃতিক সংগঠন। এখানে Core Committee, Bichar Committee, Jalsa Committee ও সাধারণ সদস্যরা একসাথে কাজ করে।</p>
+    </div>
+  </section>  <section id="events" class="section">
+    <h2 class="title">Events</h2>
+    <div class="grid">
+      <div class="card"><h3>sports tournament</h3><p class="muted">15 march</p><a class="btn" href="#">register</a></div>
+      <div class="card"><h3>jalsa program</h3><p class="muted">25 march</p><a class="btn" href="#">register</a></div>
+    </div>
+  </section>  <section id="services" class="section">
+    <h2 class="title">Club Services</h2>
+    <div class="grid">
+      <div class="card">community support</div>
+      <div class="card">training & workshop</div>
+      <div class="card">social help desk</div>
+      <div class="card">complaint submit</div>
+    </div>
+  </section><section id="dashboard" class="section">
+<h2 class="title">Advanced Member Dashboard (Wallet • Credit • Report)</h2>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="active" href="#">my profile</a>
+    <a href="#">wallet & credit</a>
+    <a href="#">all committee updates</a>
+    <a href="#">bichar committee work</a>
+    <a href="#">jalsa committee work</a>
+    <a href="#">add / approve member</a>
+    <a href="#">notice / announcement</a>
+    <a href="#">reports</a>
+    <a href="#">activity history</a>
+    <a href="#">logout</a>
+  </aside>
+
+  <div>
+    <div class="grid">
+      <div class="card">
+        <h3>💰 wallet balance</h3>
+        <p class="muted">available credit</p>
+        <strong>₹ 1,250</strong>
+      </div>
+      <div class="card">
+        <h3>⭐ club credits</h3>
+        <p class="muted">earned from activities</p>
+        <strong>320 points</strong>
+      </div>
+      <div class="card">
+        <h3>📊 monthly activity</h3>
+        <p class="muted">tasks completed</p>
+        <strong>18</strong>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>recent wallet transactions</h3>
+      <table>
+        <tr><th>date</th><th>type</th><th>description</th><th>amount</th></tr>
+        <tr><td>05 mar</td><td>credit</td><td>event participation</td><td>+₹100</td></tr>
+        <tr><td>02 mar</td><td>debit</td><td>membership renewal</td><td>-₹99</td></tr>
+        <tr><td>25 feb</td><td>credit</td><td>committee work</td><td>+₹150</td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>committee permission matrix</h3>
+      <table>
+        <tr><th>menu</th><th>core committee</th><th>committee</th><th>general</th></tr>
+        <tr><td>wallet approve</td><td>✔</td><td>✖</td><td>✖</td></tr>
+        <tr><td>credit earn</td><td>✔</td><td>✔</td><td>✔</td></tr>
+        <tr><td>view reports</td><td>✔</td><td>✔</td><td>✖</td></tr>
+        <tr><td>withdraw request</td><td>✔</td><td>✔</td><td>✖</td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>download reports</h3>
+      <p class="muted">monthly / yearly club activity & finance summary</p>
+      <a class="btn" href="#">download pdf</a>
+      <a class="btn outline" href="#">view analytics</a>
+    </div>
+  </div>
+</div>
+
+  </section>  <section id="shop" class="section">
+    <h2 class="title">Club Shop</h2>
+    <div class="grid">
+      <div class="card"><h3>t‑shirt</h3><p class="muted">₹399</p><a class="btn" href="#">buy</a></div>
+      <div class="card"><h3>cap</h3><p class="muted">₹199</p><a class="btn" href="#">buy</a></div>
+      <div class="card"><h3>membership card</h3><p class="muted">₹99 / year</p><a class="btn" href="#">join</a></div>
+    </div>
+  </section></div><footer>
+  <div class="wrap">
+    <div>
+      <strong>Black Force 007</strong>
+      <p class="muted">organized • transparent • people‑first</p>
+    </div>
+    <div>
+      <p>contact</p><p>privacy</p><p>terms</p>
+    </div>
+    <div>
+      <p>newsletter</p>
+    </div>
+  </div>
+</footer></body>
 </html>
